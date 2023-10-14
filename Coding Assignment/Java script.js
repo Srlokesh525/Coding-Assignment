@@ -1,5 +1,7 @@
 Javascript 
-1.
+1.Take a sentence as an input and reverse every word in that sentence.
+  Example - This is a sunny day > shiT si a ynnus yad.
+  
   function reverseWords(sentence) {
   // Split the sentence into words
   const words = sentence.split(" ");
@@ -20,7 +22,8 @@ const inputSentence = "Hello World";
 const reversedSentence = reverseWords(inputSentence);
 console.log(reversedSentence); // Outputs "olleH dlroW"
 ...............................................................................................................
-2.
+2. Perform sorting of an array in descending order.
+
   const originalArray = [5, 2, 9, 1, 5, 6];
 
 // Sort the array in descending order
