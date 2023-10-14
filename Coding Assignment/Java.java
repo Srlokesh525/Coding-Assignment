@@ -1,5 +1,6 @@
 Java 
-1.import java.util.ArrayList;
+1.
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class Main {
     }
 }
 
-
+.................................................................................................................
 2.import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -63,7 +64,7 @@ public class RomanToInteger {
         return result;
     }
 }
-
+.................................................................................................................
 3.import java.util.Scanner;
 
 public class PangramChecker {
