@@ -1,5 +1,6 @@
 Javascript 
-1.function reverseWords(sentence) {
+1.
+  function reverseWords(sentence) {
   // Split the sentence into words
   const words = sentence.split(" ");
   
@@ -18,8 +19,9 @@ Javascript
 const inputSentence = "Hello World";
 const reversedSentence = reverseWords(inputSentence);
 console.log(reversedSentence); // Outputs "olleH dlroW"
-
-2.const originalArray = [5, 2, 9, 1, 5, 6];
+...............................................................................................................
+2.
+  const originalArray = [5, 2, 9, 1, 5, 6];
 
 // Sort the array in descending order
 originalArray.sort(function(a, b) {
