@@ -1,0 +1,239 @@
+Html 
+Index.html
+1.<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+    <div class="buttons">
+      <button onclick="clearDisplay()">C</button>
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button onclick="appendToDisplay('+')">+</button>
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button onclick="appendToDisplay('-')">-</button>
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button onclick="appendToDisplay('')"></button>
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button onclick="calculateResult()">=</button>
+      <button onclick="appendToDisplay('/')">/</button>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+Css (style.css)
+
+
+.calculator {
+  width: 300px;
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+#display {
+  width: 100%;
+  height: 30px;
+  font-size: 18px;
+  text-align: right;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  font-size: 18px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #eee;
+}
+
+Javascript (script.js)
+
+
+let currentInput = "";
+
+function appendToDisplay(value) {
+  currentInput += value;
+  document.getElementById("display").value = currentInput;
+}
+
+function clearDisplay() {
+  currentInput = "";
+  document.getElementById("display").value = "";
+}
+
+function calculateResult() {
+  try {
+    const result = eval(currentInput);
+    document.getElementById("display").value = result;
+    currentInput = result.toString();
+  } catch (error) {
+    document.getElementById("display").value = "Error";
+  }
+}
+
+2.
+
+Html
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="survey-form">
+    <h2>Survey Form</h2>
+    <form id="surveyForm" onsubmit="return submitForm()">
+      <label for="firstName">First Name:</label>
+      <input type="text" id="firstName" required>
+
+      <label for="lastName">Last Name:</label>
+      <input type="text" id="lastName" required>
+
+      <label for="dob">Date of Birth:</label>
+      <input type="date" id="dob" required>
+
+      <label for="country">Country:</label>
+      <select id="country" required>
+        <option value="USA">USA</option>
+        <option value="Canada">Canada</option>
+        <option value="UK">UK</option>
+        <!-- Add more countries here -->
+      </select>
+
+      <label>Gender:</label>
+      <input type="checkbox" id="male" name="gender" value="Male">
+      <label for="male">Male</label>
+      <input type="checkbox" id="female" name="gender" value="Female">
+      <label for="female">Female</label>
+      <input type="checkbox" id="other" name="gender" value="Other">
+      <label for="other">Other</label>
+
+      <label for="profession">Profession:</label>
+      <input type="text" id="profession" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required>
+
+      <label for="mobile">Mobile Number:</label>
+      <input type="tel" id="mobile" required>
+
+      <button type="submit">Submit</button>
+      <button type="reset">Reset</button>
+    </form>
+  </div>
+  <div id="popup" class="hidden">
+    <div class="popup-content">
+      <h2>Survey Results</h2>
+      <button onclick="closePopup()">Close</button>
+      <div id="results"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
+Css
+
+
+.survey-form {
+  width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.popup {
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+Javascript 
+
+
+function submitForm() {
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const dob = document.getElementById("dob").value;
+  const country = document.getElementById("country").value;
+  const genderElements = document.querySelectorAll("input[type=checkbox]:checked");
+  const profession = document.getElementById("profession").value;
+  const email = document.getElementById("email").value;
+  const mobile = document.getElementById("mobile").value;
+
+  if (genderElements.length === 0) {
+    alert("Please select a gender.");
+    return false;
+  }
+
+  const gender = Array.from(genderElements).map(el => el.value).join(", ");
+
+  const results = `
+    First Name: ${firstName}
+    Last Name: ${lastName}
+    Date of Birth: ${dob}
+    Country: ${country}
+    Gender: ${gender}
+    Profession: ${profession}
+    Email: ${email}
+    Mobile Number: ${mobile}
+  `;
+
+  document.getElementById("results").textContent = results;
+  document.getElementById("popup").classList.remove("hidden");
+
+  return false;
+}
+
+function closePopup() {
+  document.getElementById("popup").classList.add("hidden");
+  document.getElementById("surveyForm").reset();
+}
